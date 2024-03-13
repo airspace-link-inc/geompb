@@ -65,7 +65,12 @@ deps:
 Simply import the package in your own definition:
 
 ```protocolbuffer
-	import "geompb/v1/geom.proto";
+import "geompb/v1/geom.proto";
+
+message MyMessage {
+  geompb.v1.Geometry geometry = 1;
+}
+
 ```
 
 ## Using with Go

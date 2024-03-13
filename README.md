@@ -36,6 +36,8 @@ message Coordinates {
 }
 ```
 
+The definition basically follow simple features, the only notable difference is in Polygons, rings are not repeating the last point being the first.
+
 ## Generate The Code
 
 ```sh
@@ -44,3 +46,24 @@ buf generate
 
 ## Using with Go
 In this repository you will see generated code for Go and helper functions to transform Geometry from and to a [Go geometry package](https://github.com/peterstace/simplefeatures).
+
+```go
+// Unmarshal from WKT using  peterstace/simplefeatures/
+input := "POLYGON((0 0,0 1,1 1,1 0,0 0))"
+g, _ := geom.UnmarshalWKT(input)
+
+// Convert from Geom to PB
+geotools.GeomToPB(g)
+
+pbg :=  &geompb.Geometry{
+				Type: geompb.Geometry_TYPE_POINT,
+				Coordinates: []*geompb.Coordinates{
+					{
+						Sequences: []float64{-73.8677438649466, 40.6213222726945},
+					},
+				}
+      }
+
+// Convert from PB to Geom
+geotools.GeomToPB(pbg)
+```

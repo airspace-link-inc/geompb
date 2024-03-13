@@ -1,14 +1,13 @@
-# geompb
-A protocol buffer representation for geometries
+syntax = "proto3";
 
+package geompb.v1;
 
-## Rational
-We have evaluated multiple solutions to transport geometries, but did not find any simple ones.  
-Some use deltas, some don't support or don't exactly map to simple features.  
-This is an attempt to not rebuild the exact same thing everywhere.
+option go_package = "github.com/airspace-link-inc/geompb/gen/go/geompb/v1;geompb";
 
-## Definition
-```protobuf
+message Coordinates {
+  repeated double sequences = 1; // lng, lat or lng lat altitude
+}
+
 message Geometry {
   Type type = 1;
   repeated Geometry geometries = 2;
@@ -31,16 +30,16 @@ message Geometry {
  }
 }
 
-message Coordinates {
-  repeated double sequences = 1; // lng, lat or lng lat altitude
+enum AltitudeUnit {
+  ALTITUDE_UNIT_UNSPECIFIED = 0;
+  ALTITUDE_UNIT_METERS = 1; // altitude is expressed in meters
+  ALTITUDE_UNIT_FEET = 2; // altitude is expressed in feet
 }
-```
 
-## Generate The Code
+enum AltitudeReference {
+  ALTITUDE_REFERENCE_UNSPECIFIED = 0;
+  ALTITUDE_REFERENCE_WGS84 = 1; // altitute ref is WGS84, ellipsoid
+  ALTITUDE_REFERENCE_AGL = 2; // altitude ref is AGL, above ground level
+  ALTITUDE_REFERENCE_AMSL = 3; // altitude ref is AMSL, above mean sea level 	
+}
 
-```sh
-buf generate
-```
-
-## Using with Go
-In this repository you will see generated code for Go and helper functions to transform Geometry from and to a [Go geometry package](https://github.com/peterstace/simplefeatures).

@@ -56,13 +56,13 @@ g, _ := geom.UnmarshalWKT(input)
 geotools.GeomToPB(g)
 
 pbg :=  &geompb.Geometry{
-				Type: geompb.Geometry_TYPE_POINT,
-				Coordinates: []*geompb.Coordinates{
-					{
-						Sequences: []float64{-73.8677438649466, 40.6213222726945},
-					},
-				}
-      }
+	Type: geompb.Geometry_TYPE_POINT,
+	Coordinates: []*geompb.Coordinates{
+		{
+			Sequences: []float64{-73.8677438649466, 40.6213222726945},
+		},
+	}
+}
 
 // Convert from PB to Geom
 geotools.GeomToPB(pbg)

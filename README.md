@@ -44,6 +44,30 @@ The definition basically follow simple features, the only notable difference is 
 buf generate
 ```
 
+## Buf
+
+This definitions is published to [buf](https://buf.build/airspacelink/geompb).
+
+You can use it by letting buf import the package for you:
+
+```yaml
+version: v1
+breaking:
+  use:
+    - FILE
+lint:
+  use:
+    - DEFAULT
+deps:
+  - buf.build/airspacelink/geompb
+```
+
+Simply import the package in your own definition:
+
+```protocolbuffer
+	import "geompb/v1/geom.proto";
+```
+
 ## Using with Go
 In this repository you will see generated code for Go and helper functions to transform Geometry from and to a [Go geometry package](https://github.com/peterstace/simplefeatures).
 

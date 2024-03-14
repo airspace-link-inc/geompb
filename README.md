@@ -96,3 +96,8 @@ pbg :=  &geompb.Geometry{
 // Convert from PB to Geom
 geotools.GeomToPB(pbg)
 ```
+
+## Notes About Altitude
+
+The proto definition contains additional messages to describe altitude references.  
+Since those don't exit in geographic simple features they are not serialized to Geom, but is a great addition you can use as well.

@@ -318,7 +318,7 @@ func TestPBToGeom(t *testing.T) {
 				Type:        geompb.Geometry_TYPE_POINT,
 				Coordinates: []*geompb.Coordinates{},
 			},
-			true,
+			false,
 		},
 
 		{
@@ -327,7 +327,7 @@ func TestPBToGeom(t *testing.T) {
 				Type:        geompb.Geometry_TYPE_LINESTRING,
 				Coordinates: []*geompb.Coordinates{},
 			},
-			true,
+			false,
 		},
 
 		{
@@ -336,7 +336,7 @@ func TestPBToGeom(t *testing.T) {
 				Type:        geompb.Geometry_TYPE_POLYGON,
 				Coordinates: []*geompb.Coordinates{},
 			},
-			true,
+			false,
 		},
 
 		{

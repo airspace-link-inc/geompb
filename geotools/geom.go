@@ -178,6 +178,10 @@ func PolygonToPB(p geom.Polygon) *geompb.Geometry {
 }
 
 func PBToGeom(pbg *geompb.Geometry) (geom.Geometry, error) {
+	if pbg == nil {
+		return geom.Geometry{}, nil
+	}
+
 	// verify proper length for types with coordinates
 	switch pbg.Type {
 	case geompb.Geometry_TYPE_POINT, geompb.Geometry_TYPE_POINTZ,
@@ -185,7 +189,7 @@ func PBToGeom(pbg *geompb.Geometry) (geom.Geometry, error) {
 		geompb.Geometry_TYPE_POLYGON, geompb.Geometry_TYPE_POLYGONZ:
 
 		if len(pbg.GetCoordinates()) == 0 {
-			return geom.Geometry{}, fmt.Errorf("empty coordinates")
+			return geom.Geometry{}, nil
 		}
 	}
 

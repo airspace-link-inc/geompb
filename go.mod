@@ -1,13 +1,15 @@
 module github.com/airspace-link-inc/geompb
 
-go 1.22.0
+go 1.23
+
+toolchain go1.24.4
 
 require (
 	github.com/airspace-link-inc/auth-generator-api v0.0.9
 	github.com/google/go-cmp v0.6.0
-	github.com/peterstace/simplefeatures v0.47.1
+	github.com/peterstace/simplefeatures v0.54.0
 	github.com/stretchr/testify v1.9.0
-	google.golang.org/protobuf v1.33.0
+	google.golang.org/protobuf v1.36.9
 )
 
 require (
